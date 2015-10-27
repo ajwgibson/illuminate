@@ -1,0 +1,29 @@
+.page-header {
+	margin-top: 20px;
+}
+
+li.list-group-item {
+	margin-bottom: 10px;
+}
+
+.tickets {
+	width: 45px !important;
+}
+
+.table,
+.table-responsive {
+    margin-top: 10px;
+}
+
+.filter .panel {
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.panel-search-result {
+    padding: 10px;
+}
+
+dd {
+    margin-left: 15px;
+}
