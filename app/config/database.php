@@ -49,9 +49,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'illuminate',
-			'username'  => 'homestead',
-			'password'  => 'secret',
+			'database'  => getenv('ILLUMINATE_DATABASE'),
+			'username'  => getenv('ILLUMINATE_USERNAME'),
+			'password'  => getenv('ILLUMINATE_PASSWORD'),
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
