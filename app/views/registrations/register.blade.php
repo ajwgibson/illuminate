@@ -24,17 +24,15 @@
         </div>
         @endif
 
-        <p>Enter a ticket number, customer name (the name on the booking) to search for a booking:</p>
+        <p><em>Enter a ticket number or customer name to search for a booking:</em></p>
 
         {{ Form::open(array('route' => 'register.search')) }}
 
         <div class="form-group">
             {{ Form::label('ticket', 'Ticket number', array ('class' => 'control-label')) }}
             <div class="row">
-                <div class="col-xs-6">
-                    <div class="input-group">
-                        {{ Form::text('ticket', Input::get('ticket'), array ('class' => 'form-control')) }}
-                    </div>
+                <div class="col-xs-4">
+                    {{ Form::text('ticket', Input::get('ticket'), array ('class' => 'form-control')) }}
                 </div>
             </div>
         </div>
@@ -43,16 +41,18 @@
             {{ Form::label('name', 'Customer name', array ('class' => 'control-label')) }}
             <div class="row">
                 <div class="col-xs-6">
-                    {{ Form::text('name', Input::get('name'), array ('class' => 'form-control')) }}
+                	{{ Form::text('name', Input::get('name'), array ('class' => 'form-control')) }}
                 </div>
             </div>
             <p class="help-block">
-                <em><strong>Hint:</strong> Try the customer's first name or last name, not both. <br/>
-                If you're not sure of the correct spelling try putting in just part of the name. </em>
+                <em>
+                	Try the customer's first name or last name, but not both.<br/>
+                	If you're not sure of the correct spelling try putting in just part of the name.
+        		</em>
             </p>
         </div>
 
-        {{ Form::submit('Search', array ('class' => 'btn btn-default')) }} 
+        {{ Form::submit('Search', array ('class' => 'btn btn-success')) }} 
 
         {{ Form::close() }}
 
@@ -86,14 +86,24 @@
                         </div>
         						
                         <div class="col-sm-6">
-							{{ Form::open(array('route' => 'register.booking', 'class' => 'form-inline')) }}
-							{{ Form::hidden('booking_id', $booking->id) }}
-							<div class="form-group">
-			            		{{ Form::label('tickets', 'Tickets', array ('class' => 'control-label')) }}
-		                		{{ Form::text('tickets', $booking->tickets - $booking->registration_count(), array ('class' => 'form-control tickets')) }}
-		                	</div>
-							{{ Form::submit('Register', array ('class' => 'btn btn-primary')) }} 
-							{{ Form::close() }}
+                        	<div class="pull-right">
+                        	@if ($booking->registered())
+	                        	<p><b><i>This booking is already fully registered.</i></b></p>
+                        	@else
+								{{ Form::open(array('route' => 'register.booking', 'class' => 'form-inline')) }}
+								{{ Form::hidden('booking_id', $booking->id) }}
+								@if ($booking->to_register() > 1)
+									<div class="form-group">
+					            		{{ Form::label('tickets', 'Tickets', array ('class' => 'control-label')) }}
+				                		{{ Form::text('tickets', $booking->tickets - $booking->registration_count(), array ('class' => 'form-control tickets')) }}
+				                	</div>
+			                	@else
+			                		{{ Form::hidden('tickets', 1) }}
+			                	@endif
+								{{ Form::submit('Register', array ('class' => 'btn btn-primary')) }} 
+								{{ Form::close() }}
+							@endif
+							</div>
 						</div>
 
 					</div>

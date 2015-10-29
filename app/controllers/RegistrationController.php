@@ -29,7 +29,12 @@ class RegistrationController extends BaseController {
             	Booking::where(function($query) use($ticket) {
                     $query->where('bookings.numbers', $ticket)
                           ->orWhere('bookings.numbers', 'LIKE', "$ticket,%")
+                          ->orWhere('bookings.numbers', 'LIKE', "$ticket ,%")
                           ->orWhere('bookings.numbers', 'LIKE', "%,$ticket,%")
+                          ->orWhere('bookings.numbers', 'LIKE', "%, $ticket,%")
+                          ->orWhere('bookings.numbers', 'LIKE', "%, $ticket ,%")
+                          ->orWhere('bookings.numbers', 'LIKE', "%,$ticket ,%")
+                          ->orWhere('bookings.numbers', 'LIKE', "%, $ticket")
                           ->orWhere('bookings.numbers', 'LIKE', "%,$ticket");
                 })->get();
         }
