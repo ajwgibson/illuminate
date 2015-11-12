@@ -29,6 +29,14 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                {{ Form::label('filter_registered', 'Status', array('class' => 'control-label')) }}
+                <div>
+                    <label class="checkbox-inline">{{ Form::checkbox('filter_registered', true, $filter_registered) }} Fully registered</label><br/>
+                    <label class="checkbox-inline">{{ Form::checkbox('filter_not_registered', true, $filter_not_registered) }} Not fully registered</label><br/>
+                </div>
+            </div>
+
         </div>
 
         <div class="col-sm-6">
