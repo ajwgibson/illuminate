@@ -7,7 +7,7 @@ class RegistrationController extends BaseController {
      */
 	public function register()
 	{
-        $this->layout->with('subtitle', 'Register a delegate');
+    $this->layout->with('subtitle', 'Register a delegate');
 		$this->layout->content = View::make('registrations.register');
 	}
 
@@ -36,15 +36,26 @@ class RegistrationController extends BaseController {
                           ->orWhere('bookings.numbers', 'LIKE', "%,$ticket ,%")
                           ->orWhere('bookings.numbers', 'LIKE', "%, $ticket")
                           ->orWhere('bookings.numbers', 'LIKE', "%,$ticket");
-                })->get();
+                })->orderBy('bookings.first')->orderBy('bookings.last')->get();
         }
 
         if (!(empty($name)) && (!isset($bookings) or ($bookings->count() == 0))) {
-            $bookings = 
-            	Booking::where(function($query) use($name) {
-                    $query->where('bookings.first', 'LIKE', "%$name%")
-                          ->orWhere('bookings.last', 'LIKE', "%$name%");
-                })->get();
+
+            $parts = explode(' ', $name);
+
+            if (count($parts) > 1) {
+              $bookings = 
+                Booking::where(function($query) use($parts) {
+                      $query->where('bookings.first', 'LIKE', "%{$parts[0]}%")
+                            ->where('bookings.last',  'LIKE', "%{$parts[1]}%");
+                  })->orderBy('bookings.first')->orderBy('bookings.last')->get();
+            } else {
+              $bookings = 
+              	Booking::where(function($query) use($name) {
+                      $query->where('bookings.first', 'LIKE', "%$name%")
+                            ->orWhere('bookings.last', 'LIKE', "%$name%");
+                  })->orderBy('bookings.first')->orderBy('bookings.last')->get();
+            }
         }
 
         $booking_count = $bookings->count();

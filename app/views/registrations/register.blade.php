@@ -46,7 +46,7 @@
             </div>
             <p class="help-block">
                 <em>
-                	Try the customer's first name or last name, but not both.<br/>
+                	Try the customer's first name, last name or both.<br/>
                 	If you're not sure of the correct spelling try putting in just part of the name.
         		</em>
             </p>
