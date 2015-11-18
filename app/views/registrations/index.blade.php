@@ -22,12 +22,12 @@
     	<div class="col-sm-6">
 
             <div class="form-group">
-                {{ Form::label('filter_day', 'Source', array('class' => 'control-label')) }}
+                {{ Form::label('filter_day', 'Registration day', array('class' => 'control-label')) }}
                 <div>
                 	<label class="checkbox-inline">{{ Form::checkbox('filter_friday', true, $filter_friday) }} Friday</label><br/>
                 	<label class="checkbox-inline">{{ Form::checkbox('filter_saturday', true, $filter_saturday) }} Saturday</label><br/>
                 </div>
-        		<p class="help-block">Only tick one of these options or leave them all deselected to show registrations for all days (the default)</p>
+        		<p class="help-block">Only tick one of these options or leave them both deselected to show registrations for both days (the default)</p>
             </div>
 
         </div>
