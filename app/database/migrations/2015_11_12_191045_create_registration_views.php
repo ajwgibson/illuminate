@@ -14,10 +14,10 @@ class CreateRegistrationViews extends Migration {
 	{
 		DB::statement(<<<'EOD1'
 			create view registration_counts as
-			  select 
-			      booking_id, 
-			      count(booking_id) as registered 
-			    from registrations 
+			  select
+			      booking_id,
+			      sum(tickets) as registered
+			    from registrations
 			    group by booking_id
 EOD1
 		);
