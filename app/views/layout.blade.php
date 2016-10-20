@@ -55,11 +55,19 @@
         <div class="container">
 
             <div class="page-header">
-                <img src="{{ asset('images/banner.jpg') }}" class="img-responsive" alt="Illuminate banner">
-                <h1>Illuminate 2015 @if ($subtitle) <span class="subtitle"><small>&raquo; {{ $subtitle }}</small></span> @endif</h1>
+                <div class="img-overlay">
+                    <img src="{{ asset('images/banner.jpg') }}" class="img-responsive" alt="Illuminate banner">
+                </div>
             </div>
 
             <div>
+                @if ($subtitle)
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h2>{{ $subtitle }}</h2>
+                    </div>
+                </div>
+                @endif
                 {{ $content }}
             </div>
 

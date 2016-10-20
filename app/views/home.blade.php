@@ -1,12 +1,14 @@
 
-<div class="col-sm-8">
+<div class="row">
+
+<div class="col-md-6">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">Registration totals</h3>
 		</div>
 		<div class="panel-body">
 			<div class="col-sm-6">
-				<canvas id="registrationStatusChart" width="250" height="250"></canvas>
+				<canvas id="registrationStatusChart" width="200" height="200"></canvas>
 			</div>
 			<div class="col-sm-6">
 				<ul class="list-group">
@@ -18,14 +20,14 @@
 	</div>
 </div>
 
-<div class="col-sm-8">
+<div class="col-md-6">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">Registration by day</h3>
 		</div>
 		<div class="panel-body">
 			<div class="col-sm-6">
-				<canvas id="registrationDayChart" width="250" height="250"></canvas>
+				<canvas id="registrationDayChart" width="200" height="200"></canvas>
 			</div>
 			<div class="col-sm-6">
 				<ul class="list-group">
@@ -35,6 +37,8 @@
 			</div>
 		</div>
 	</div>
+</div>
+
 </div>
 
 
