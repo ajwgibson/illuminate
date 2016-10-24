@@ -65,6 +65,11 @@
         	<div class="panel panel-primary panel-search-result">
 
                 <div class="panel-heading">
+                    @if ($booking->saturday)
+                        <div class="pull-right text-danger" style="background: white; padding-left: 5px; padding-right: 5px;">
+                            <span class="glyphicon glyphicon-exclamation-sign"> </span> Note: this booking is for Saturday only.
+                        </div>
+                    @endif
                     <h3 class="panel-title text-uppercase">{{{ $booking->name() }}}</h3>
                 </div>
                 

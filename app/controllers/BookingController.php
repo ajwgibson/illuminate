@@ -14,6 +14,8 @@ class BookingController extends BaseController {
         $filter_eventbrite     = Session::get('bookings_filter_eventbrite', '');
         $filter_registered     = Session::get('bookings_filter_registered', '');
         $filter_not_registered = Session::get('bookings_filter_not_registered', '');
+        $filter_saturday       = Session::get('bookings_filter_saturday',     '');
+        $filter_not_saturday   = Session::get('bookings_filter_not_saturday', '');
 
         if (!(empty($filter_name))) {
             $bookings = $bookings
@@ -44,6 +46,15 @@ class BookingController extends BaseController {
             }
         }
 
+        if (($filter_saturday || $filter_not_saturday) && !($filter_saturday && $filter_not_saturday)) {
+            if ($filter_saturday) {
+                $bookings = $bookings->where('saturday', true);
+            } else {
+                $bookings = $bookings->where('saturday', false);
+            }
+            $filtered = true;
+        }        
+
 		$bookings = $bookings->paginate(25);
 
 		$this->layout->content = 
@@ -54,7 +65,9 @@ class BookingController extends BaseController {
                 ->with('filter_church', $filter_church)
                 ->with('filter_eventbrite', $filter_eventbrite)
                 ->with('filter_registered', $filter_registered)
-                ->with('filter_not_registered', $filter_not_registered);
+                ->with('filter_not_registered', $filter_not_registered)
+                ->with('filter_saturday', $filter_saturday)
+                ->with('filter_not_saturday', $filter_not_saturday);
 	}
 
 	/**
@@ -69,12 +82,16 @@ class BookingController extends BaseController {
         $filter_eventbrite     = Input::get('filter_eventbrite');
         $filter_registered     = Input::get('filter_registered');
         $filter_not_registered = Input::get('filter_not_registered');
+        $filter_saturday       = Input::get('filter_saturday');
+        $filter_not_saturday   = Input::get('filter_not_saturday');
         
         Session::put('bookings_filter_name',           $filter_name);
         Session::put('bookings_filter_church',         $filter_church);
         Session::put('bookings_filter_eventbrite',     $filter_eventbrite);
         Session::put('bookings_filter_registered',     $filter_registered);
         Session::put('bookings_filter_not_registered', $filter_not_registered);
+        Session::put('bookings_filter_saturday',       $filter_saturday);
+        Session::put('bookings_filter_not_saturday',   $filter_not_saturday);
 
         return Redirect::route('bookings');
     }
@@ -92,6 +109,8 @@ class BookingController extends BaseController {
         if (Session::has('bookings_filter_eventbrite'))     Session::forget('bookings_filter_eventbrite');
         if (Session::has('bookings_filter_registered'))     Session::forget('bookings_filter_registered');
         if (Session::has('bookings_filter_not_registered')) Session::forget('bookings_filter_not_registered');
+        if (Session::has('bookings_filter_saturday'))       Session::forget('bookings_filter_saturday');
+        if (Session::has('bookings_filter_not_saturday'))   Session::forget('bookings_filter_not_saturday');
 
         return Redirect::route('bookings');
     }

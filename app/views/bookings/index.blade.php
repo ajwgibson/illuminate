@@ -37,6 +37,14 @@
                 </div>
             </div>
 
+            <div class="form-group">
+                {{ Form::label('filter_saturday', 'Saturday ticket?', array('class' => 'control-label')) }}
+                <div>
+                    <label class="checkbox-inline">{{ Form::checkbox('filter_saturday', true, $filter_saturday) }} Yes</label><br/>
+                    <label class="checkbox-inline">{{ Form::checkbox('filter_not_saturday', true, $filter_not_saturday) }} No</label><br/>
+                </div>
+            </div>
+
         </div>
 
         <div class="col-sm-6">
@@ -76,7 +84,8 @@
 			<th>Tickets booked</th>
 			<th>Registrations</th>
 			<th>Booking reference or ticket number(s)</th>
-			<th>Source</th>
+            <th>Source</th>
+			<th>Saturday ticket?</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -87,7 +96,8 @@
 			<td>{{{ $booking->tickets }}}</td>
 			<td>{{{ $booking->registration_count() }}}</td>
 			<td>{{{ $booking->numbers }}}</td>
-			<td>{{{ $booking->source }}}</td>
+            <td>{{{ $booking->source }}}</td>
+			<td>{{{ $booking->saturday ? 'Yes' : 'No' }}}</td>
 		</tr>
 	@endforeach
 	</tbody>
