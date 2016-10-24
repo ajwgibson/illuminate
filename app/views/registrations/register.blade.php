@@ -81,8 +81,10 @@
                             <dl>
                                 <dt>Source</dt>
 								<dd>{{{ $booking->source }}}</dd>
+                                @if ($booking->numbers)
 								<dt>Booking reference or ticket number(s)</dt>
 								<dd>{{{ $booking->numbers }}}</dd>
+                                @endif
 								<dt>Booked</dt>
 								<dd>{{{ $booking->tickets }}}</dd>
 								<dt>Registered</dt>
