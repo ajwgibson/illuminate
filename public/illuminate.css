@@ -11,6 +11,10 @@
 	border: 0;
 }
 
+.navbar-collapse.collapse.in {
+	background-color: #18262f;
+}
+
 .content {
 	margin-top: 30px;
 }
