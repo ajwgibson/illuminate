@@ -12,7 +12,6 @@
     <title>Illuminate Sign In Application</title>
 
     <link rel="stylesheet" href="{{ asset('packages/bootstrap/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('sticky-footer.css') }}">
     <link rel="stylesheet" href="{{ asset('illuminate.css') }}">
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -29,7 +28,8 @@
     <div id="wrap">
 
         <!-- Fixed navbar -->
-        <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+          <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -49,16 +49,15 @@
                     </ul>
                 </div>
             </div>
+          </div>
+        </div>
+
+        <div class="container-fluid banner">
+            <img src="{{ asset('images/banner.jpg') }}" class="img-responsive" alt="Illuminate banner">
         </div>
 
         <!-- Begin page content -->
-        <div class="container">
-
-            <div class="page-header">
-                <div class="img-overlay">
-                    <img src="{{ asset('images/banner.jpg') }}" class="img-responsive" alt="Illuminate banner">
-                </div>
-            </div>
+        <div class="container content">
 
             <div>
                 @if ($subtitle)

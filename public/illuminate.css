@@ -1,5 +1,22 @@
-.page-header {
-	margin-top: 20px;
+.banner {
+	padding: 0;
+}
+
+.navbar,
+.navbar-inner {
+	background: transparent;
+}
+
+.navbar-inverse {
+	border: 0;
+}
+
+.content {
+	margin-top: 30px;
+}
+
+.content h2 {
+	margin-bottom: 20px;
 }
 
 li.list-group-item {
