@@ -31,6 +31,10 @@ li.list-group-item {
 	width: 45px !important;
 }
 
+form {
+	margin-bottom: 20px;
+}
+
 .table,
 .table-responsive {
     margin-top: 10px;
