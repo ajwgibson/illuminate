@@ -80,6 +80,26 @@
 
     @yield('extra_js')
 
+    <script type="text/javascript">
+
+      $(function() {
+
+        $(window).on('scroll', function() {
+
+          var bannerBottom = $('.banner').offset().top + $('.banner').height();
+          var stop = Math.round($(window).scrollTop()) + 50;
+
+          if (stop > bannerBottom) {
+            $('.navbar').addClass('past-banner');
+          } else {
+            $('.navbar').removeClass('past-banner');
+          }
+        });
+
+      });
+
+    </script>
+
 </body>
 
 </html>
