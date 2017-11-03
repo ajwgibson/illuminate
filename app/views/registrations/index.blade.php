@@ -48,9 +48,9 @@
             {{ Form::submit('Apply filters', array('class' => 'btn btn-info')) }}
 
             {{ link_to_route(
-                'registrations.resetfilter', 
-                'Reset filters', 
-                $parameters = array( ), 
+                'registrations.resetfilter',
+                'Reset filters',
+                $parameters = array( ),
                 $attributes = array( 'class' => 'btn btn-default' ) ) }}
 
         </div>
@@ -61,24 +61,26 @@
 
 </div>
 
-<table class="table table-striped table-bordered">
-	<thead>
-		<tr>
-			<th>Name</th>
-			<th>Tickets</th>
-			<th>Date &amp; time</th>
-		</tr>
-	</thead>
-	<tbody>
-	@foreach ($registrations as $registration)
-		<tr>
-			<td>{{{ $registration->name() }}}</td>
-			<td>{{{ $registration->tickets }}}</td>
-			<td>{{{ $registration->created_at }}}</td>
-		</tr>
-	@endforeach
-	</tbody>
-</table>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+  	<thead>
+  		<tr>
+  			<th>Name</th>
+  			<th>Tickets</th>
+  			<th>Date &amp; time</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  	@foreach ($registrations as $registration)
+  		<tr>
+  			<td>{{{ $registration->name() }}}</td>
+  			<td>{{{ $registration->tickets }}}</td>
+  			<td>{{{ $registration->created_at }}}</td>
+  		</tr>
+  	@endforeach
+  	</tbody>
+  </table>
+</div>
 
 <div class="pull-right">
     {{ $registrations->links() }}

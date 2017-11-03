@@ -63,9 +63,9 @@
             {{ Form::submit('Apply filters', array('class' => 'btn btn-info')) }}
 
             {{ link_to_route(
-                'bookings.resetfilter', 
-                'Reset filters', 
-                $parameters = array( ), 
+                'bookings.resetfilter',
+                'Reset filters',
+                $parameters = array( ),
                 $attributes = array( 'class' => 'btn btn-default' ) ) }}
 
         </div>
@@ -76,32 +76,34 @@
 
 </div>
 
-<table class="table table-striped table-bordered">
-	<thead>
-		<tr>
-			<th>Last name</th>
-			<th>First name</th>
-			<th>Tickets booked</th>
-			<th>Registrations</th>
-			<th>Booking reference or ticket number(s)</th>
-            <th>Source</th>
-			<th>Saturday ticket?</th>
-		</tr>
-	</thead>
-	<tbody>
-	@foreach ($bookings as $booking)
-		<tr>
-			<td>{{{ $booking->last }}}</td>
-			<td>{{{ $booking->first }}}</td>
-			<td>{{{ $booking->tickets }}}</td>
-			<td>{{{ $booking->registration_count() }}}</td>
-			<td>{{{ $booking->numbers }}}</td>
-            <td>{{{ $booking->source }}}</td>
-			<td>{{{ $booking->saturday ? 'Yes' : 'No' }}}</td>
-		</tr>
-	@endforeach
-	</tbody>
-</table>
+<div class="table-responsive">
+  <table class="table table-striped table-bordered">
+    <thead>
+    	<tr>
+    		<th>Last name</th>
+    		<th>First name</th>
+    		<th>Tickets booked</th>
+    		<th>Registrations</th>
+    		<th>Booking reference or ticket number(s)</th>
+              <th>Source</th>
+    		<th>Saturday ticket?</th>
+    	</tr>
+    </thead>
+    <tbody>
+    @foreach ($bookings as $booking)
+    	<tr>
+    		<td>{{{ $booking->last }}}</td>
+    		<td>{{{ $booking->first }}}</td>
+    		<td>{{{ $booking->tickets }}}</td>
+    		<td>{{{ $booking->registration_count() }}}</td>
+    		<td>{{{ $booking->numbers }}}</td>
+              <td>{{{ $booking->source }}}</td>
+    		<td>{{{ $booking->saturday ? 'Yes' : 'No' }}}</td>
+    	</tr>
+    @endforeach
+    </tbody>
+  </table>
+</div>
 
 <div class="pull-right">
     {{ $bookings->links() }}
