@@ -1,23 +1,5 @@
-.banner {
-	padding: 0;
-}
-
-.navbar,
-.navbar-inner {
-	background: transparent;
-}
-
-.navbar-inverse {
-	border: 0;
-}
-
-.navbar-collapse.collapse.in {
-	background-color: #18262f;
-}
-
-.navbar.past-banner,
-.navbar.past-banner .navbar-inner {
-	background-color: #18262f;
+body {
+	padding-top: 20px;
 }
 
 .content {

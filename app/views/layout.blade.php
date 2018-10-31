@@ -28,9 +28,8 @@
     <div id="wrap">
 
         <!-- Fixed navbar -->
-        <div class="container-fluid">
-          <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
+        <div class="container">
+            <div class="navbar navbar-inverse" role="navigation">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                         <span class="sr-only">Toggle navigation</span>
@@ -49,11 +48,10 @@
                     </ul>
                 </div>
             </div>
-          </div>
         </div>
 
-        <div class="container-fluid banner">
-            <img src="{{ asset('images/banner.jpg') }}" class="img-responsive" alt="Illuminate banner">
+        <div class="container banner">
+            <img src="{{ asset('images/banner.jpg') }}" class="img-responsive img-rounded" alt="Illuminate banner">
         </div>
 
         <!-- Begin page content -->
